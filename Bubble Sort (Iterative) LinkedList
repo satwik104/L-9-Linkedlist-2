@@ -1,0 +1,26 @@
+Node *bubbleSort(Node *head)
+{
+	if(head==NULL)
+        return head;
+    else
+    {
+        Node* current=head;
+        Node* traverser=NULL;
+        while(current!=NULL)
+        {
+            traverser=current->next;
+            while(traverser!=NULL)
+            {
+                if(current->data>traverser->data)
+                {
+                    int temp = current->data;
+                    current->data=traverser->data;
+                    traverser->data=temp;
+                }
+                traverser=traverser->next;
+            }
+            current=current->next;
+        }
+        return head;//because we are swappingg the data only, the pointer pointing to these locations of data are same
+    }
+}
