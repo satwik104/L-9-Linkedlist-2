@@ -1,0 +1,18 @@
+//if we follow hint....we need to code a lot...so follow this apprach
+//int his way we dont need to make links just swap the data and return head
+
+Node *swapNodes(Node *head, int i, int j)
+{
+	Node* save=head;
+	Node* c1=head;
+	Node* c2=head;
+    
+    for(int a=0; a<i; a++)
+        c1=c1->next;
+    for(int a=0; a<j; a++)
+        c2=c2->next;
+    int temp=c1->data;
+    c1->data=c2->data;
+    c2->data=temp;
+    return save;
+}
