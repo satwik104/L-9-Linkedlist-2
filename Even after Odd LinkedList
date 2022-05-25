@@ -1,0 +1,58 @@
+//see hint video
+Node *evenAfterOdd(Node *head)
+{
+	if(head==NULL || head->next==NULL)
+        return head;
+    Node* oddH = NULL;
+    Node* oddT = NULL;
+    Node* evenH = NULL;
+    Node* evenT = NULL;
+    
+    while(head!=NULL)
+    {
+        if(head->data%2 == 0)//making seperate lists out of main list
+        {
+            if(evenH == NULL)
+            {
+                evenH=head;
+                evenT=head;
+            }
+            else
+            {
+                evenT->next=head;
+                evenT=evenT->next;
+            }
+        }
+        else
+        {
+            if(oddH==NULL)
+            {
+                oddH=head;
+                oddT=head;
+            }
+            else
+            {
+                oddT->next=head;
+                oddT = oddT->next;
+            }
+        }
+        head=head->next;
+    }
+    
+    if(oddH == NULL)//checking if it was a case of only even numbers
+    {
+        evenT->next=NULL;
+        return evenH;
+    }
+    else if(evenH == NULL)//checking if it was a case of only odd numbers
+    {
+        oddT->next=NULL;
+        return oddH;
+    }
+    else//checking if it was a case of both even and odd numbers
+    {
+        oddT->next=evenH;//connecting the two linkedlists
+        evenT->next=NULL;
+        return oddH;
+    }  
+}
