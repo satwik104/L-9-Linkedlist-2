@@ -1,0 +1,12 @@
+int findNodeRec(Node *head, int n)
+{
+	if(head==NULL)
+        return -1;
+   if(head->data==n)//our work
+       return 0;
+    int smallans=findNodeRec(head->next,n);
+    if(smallans==-1)
+        return -1;
+    else
+        return 1+smallans;//because recursion k paas ek 
+}
