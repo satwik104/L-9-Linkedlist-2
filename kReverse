@@ -1,0 +1,24 @@
+Node *kReverse(Node *head, int k)
+{
+    if(k==0)
+        return head; //because their is no reversal
+    Node* current=head;
+    Node* next=NULL;
+    Node* prev=NULL;
+    int i=0;
+    while(i<k && current!=NULL)
+    {
+        next=current->next;
+        current->next=prev;
+        prev=current;
+        current=next;
+        i++;
+    }
+    if(next!=NULL)//we are checking next becoz we pass next in recursion and that next is recieved as head and assigned in current
+    {
+        //now assuming that recursion will give the remaining string ans....we must link that ans with the first no.,
+        //of our given linkedlist that is head becoz we have already reversed the first part
+        head->next=kReverse(next,k);
+    }
+        return prev;//because current shifts to the last no of given list which is first no. of ans list and current is assigned in prev
+}
