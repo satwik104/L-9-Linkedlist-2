@@ -1,0 +1,14 @@
+Node *midPoint(Node *head)
+{
+    if(head==NULL || head->next==NULL)
+        return head;
+    Node *slow=head;
+    Node *fast=head->next;
+    while(fast!=NULL && fast->next!=NULL)//first condition is working for odd case
+                                         //second condition is working for even case
+    {
+        slow=slow->next;
+        fast=fast->next->next;//after first interation it will be 2 steps forward of s
+    }
+    return slow;
+}
